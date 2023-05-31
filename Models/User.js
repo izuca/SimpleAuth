@@ -1,5 +1,6 @@
 const { Schema,model } = require('../Database/connection')
 
+
 //Criando o Schema
 const userSchema = new Schema({
     username: {type: String, unique: true , required: true},

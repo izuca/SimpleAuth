@@ -3,7 +3,8 @@ const { Schema,model } = require('../Database/connection')
 //Criando o Schema
 const todoSchema = new Schema({
     content: { type: String , required: true},
-    date: Date.now
+    reminder: { type: String, required: true},
+    completed: { type: Boolean, required: true, default: false}
 })
 
 //Criando o model Todo
