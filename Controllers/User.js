@@ -1,7 +1,7 @@
 require('dotenv').config()
 const { Router } = require('express')
 const User = require('../Models/User')
-const bcrypt =  require('bycriptjs')
+const bcrypt =  require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { log } = require('mercedlogger')
 
@@ -14,13 +14,13 @@ router.post('/signup', async (req,res) =>{
         //Checa se o usuário já existe
         if( await User.find({username: req.body.username}))
             res.status(400).json({ error: 'Usuário já existente' })
-        else{ // Cria a senha com hask e o usuário
+        else{ // Cria a senha com hash e o usuário
             req.body.password = await bcrypt.hash(req.body.password,10)
             const user = await User.create(req.body)
-            log.green('Usuário criado com sucesso')
+            log.green('AUTHENTICATION STATUS','Usuário criado com sucesso')
             res.json(user)
         }
-    } catch (error){
+    } catch (error){ //Erro na conexão
         res.status(400).json(error)
     }
 })
@@ -36,7 +36,7 @@ router.post('/login', async (req,res) =>{
             if(await bcrypt.compare(req.body.password, user.password)){
                 //Gera o token
                 const token = jwt.sign({ username: user.username }, process.env.SECRET)
-                log.green(`Usuário autenticado! Seja bem-vindo ${ user.username }`)
+                log.green('AUTHENTICATION STATUS',`Usuário autenticado! Seja bem-vindo ${ user.username }`)
                 res.json({ token })
             } else  //Se a senha não confere
                 res.status(400).json({ error: 'Senha incorreta'})

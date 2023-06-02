@@ -4,7 +4,7 @@ const {log} = require('mercedlogger')
 
 //Conectando ao MONGO
 try {
-   await mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 } catch (error) {
     log.red("DATABASE STATE", error)
 }

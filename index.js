@@ -3,6 +3,7 @@ const express = require('express')
 const morgan = require('morgan')
 const {log} = require('mercedlogger')
 const cors = require('cors')
+const userRouter = require('./Controllers/User')
 
 //Objeto da Aplicação
 const app = express()
@@ -19,6 +20,9 @@ app.use(express.json()) // Tipo o bodyparser
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
+
+// Envia todas as requisições do /user pro userRouter pra roteamento
+app.use('/user', userRouter)
 
 
 // App Listener
