@@ -13,11 +13,12 @@ const port = 3000
 
 //Middleware global
 app.use(cors()) // Adiciona os headers do CORS
-app.use(morgan('tyny')) // Loga o Request
+app.use(morgan('Request')) // Loga o Request
 app.use(express.json()) // Tipo o bodyparser 
 
 // Rotas
 app.get('/', (req, res) => {
+  console.log("to na home")
   res.send('Hello World!')
 })
 
