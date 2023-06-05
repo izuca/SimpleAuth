@@ -20,7 +20,7 @@ app.use(express.json()) // Tipo o bodyparser
 // Rotas
 app.get('/', (req, res) => {
   console.log("to na home")
-  console.log(req.headers)
+  console.log(req.params)
   res.send('Hello World!')
 })
 

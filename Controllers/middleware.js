@@ -27,10 +27,10 @@ const isLoggedIn = async (req,res,next) => {
             res.status(400).json({ error: "No authorization header"})
         }
     } catch (error) {
-        res.status.json({ error })
+        res.status(400).json({ error })
     }
 }
 
 //Exportando middleware
 
-module.export = isLoggedIn
+module.exports = { isLoggedIn }
