@@ -2,7 +2,7 @@ const { Schema,model } = require('../Database/connection')
 
 //Criando o Schema
 const todoSchema = new Schema({
-    content: { type: String , required: true},
+    username: { type: String , required: true},
     reminder: { type: String, required: true},
     completed: { type: Boolean, required: true, default: false}
 })

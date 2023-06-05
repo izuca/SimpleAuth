@@ -33,7 +33,6 @@ router.post('/login', async (req,res) =>{
     try {
         //Checa se o usuário existe
         const user = await User.findOne({ username: req.body.username })
-        console.log(req.body.username ,user.username,user.password)
         
         if(user != []){
             //Checa se a senha confere
@@ -43,6 +42,7 @@ router.post('/login', async (req,res) =>{
                 //Gera o token
                 const token = jwt.sign({ username: user.username }, process.env.SECRET)
                 log.green('AUTHENTICATION STATUS',`Usuário autenticado! Seja bem-vindo ${ user.username }`)
+                console.log(req.headers.authorization)
                 return res.json({ token })
             } else  //Se a senha não confere
                 return res.status(400).json({ error: 'Senha incorreta' })
