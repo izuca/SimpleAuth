@@ -170,14 +170,6 @@ Exclui a Task de Acordo com o seu ID
 **Header de autenticação**:
 - `authorization`: `bearer seu_token_jwt`
 
-**Exemplo de solicitação**:
-    DELETE /todo/:id
-    Content-Type: application/json
-
-    {
-    "reminder": "Tarefa a ser atualizada"
-    }
-
 ## Contribuição
 
 O objetivo desse projeto é fundamentar, através da prática, a lógica por trás do funcionamento de uma autenticação usando JSON Web Token(JWT). Este repositório será usado para consultas futuras e revisar os conceitos trabalhados aqui.
